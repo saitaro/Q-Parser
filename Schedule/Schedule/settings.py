@@ -126,7 +126,7 @@ TIME_ZONE = 'UTC'
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379' # 'redis://localhost:6379'
 
 # бэкэнд, используемый для хранения результатов задачи.
-CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379' # 'redis://localhost:6379'
+# CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379' # 'redis://localhost:6379'
 
 #тип принимаемого контента. Если прийдет не тот что указан, вызывается ошибка.
 CELERY_ACCEPT_CONTENT = ['application/json']
@@ -148,3 +148,4 @@ CELERY_BEAT_SCHEDULE = {
         'schedule': crontab(minute=0, hour=6),
         'args': (),
     },
+}
