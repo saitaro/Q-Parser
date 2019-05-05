@@ -11,8 +11,8 @@ import requests
 from bs4 import BeautifulSoup
 from celery import shared_task, group
 
-# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Schedule.settings")
-# django.setup()
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Schedule.settings")
+django.setup()
 from .models import Apartment
 
 
@@ -91,6 +91,10 @@ def parse(url):
 
 @shared_task
 def main():
-    links = get_links(URL)
+    proxy = '212.22.86.114:3130'
+    user_agent = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    links = get_links(URL, user_agent=user_agent, proxy=proxy)
+    print('LINKS', links)
+
     job = group(parse.s(link) for link in links)
     job.apply_async()

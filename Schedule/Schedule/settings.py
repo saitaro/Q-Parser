@@ -143,12 +143,13 @@ CELERY_TIMEZONE = TIME_ZONE
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 CELERY_BEAT_SCHEDULE = {
-    'main_cian_parse': {
-        'task': 'main.tasks.main',
-        # 'schedule': crontab(minute=0, hour=6),
-        'schedule': 15,
-        'args': (),
-    },
+    # 'main_cian_parse': {
+    #     'task': 'main.tasks.main',
+    #     # 'schedule': crontab(minute=0, hour=6),
+    #     'schedule': 15,
+    #     'args': (),
+    # },
+    
     # 'add-every-10-seconds': {
     #     'task': 'main.tasks.add',
     #     'schedule': 2.0,
