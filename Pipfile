@@ -18,6 +18,7 @@ django-celery-beat = "*"
 django-celery-results = "*"
 gevent = "*"
 flower = "*"
+django-rest-elasticsearch = "*"
 
 [dev-packages]
 
