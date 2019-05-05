@@ -7,7 +7,28 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-  <h1>Hello world</h1>
-  <h1>Сегодняшнее {{ users }}</h1>
+  <h1 class="pl-3">День добрый! Квартирку выбираем?</h1>
+  <table class="table table-sm table-hover table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Площадь</th>
+        <th>Этаж</th>
+        <th>Цена, руб/мес</th>
+        <th>Адрес</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for ad in ads %}
+        <tr>
+          <th scope="row">{{ad.pk}}</th>
+          <td>{{ad.total_area}} м²</td>
+          <td>{{ad.floor}}</td>
+          <td>{{ad.price}}</td>
+          <td>{{ad.address}}</td>
+        </tr>
+      {% endfor %}    
+    </tbody>
+  </table>
 </body>
 </html>

@@ -9,10 +9,10 @@ from urllib.parse import parse_qs
 import django
 import requests
 from bs4 import BeautifulSoup
-from celery import task, shared_task, group, chain
+from celery import shared_task, group
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Schedule.settings")
-django.setup()
+# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Schedule.settings")
+# django.setup()
 from .models import Apartment
 
 

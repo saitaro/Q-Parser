@@ -145,7 +145,8 @@ CELERY_TIMEZONE = TIME_ZONE
 CELERY_BEAT_SCHEDULE = {
     'main_cian_parse': {
         'task': 'main.tasks.main',
-        'schedule': crontab(minute=0, hour=6),
+        # 'schedule': crontab(minute=0, hour=6),
+        'schedule': 15,
         'args': (),
     },
     # 'add-every-10-seconds': {
