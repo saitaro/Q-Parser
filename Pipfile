@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "==2.2"
+"beautifulsoup4" = "*"
+lxml = "*"
+requests = "*"
+selenium = "*"
+pillow = "*"
+pytesseract = "*"
+"psycopg2" = "*"
+celery = {extras = ["redis"], version = "*"}
+redis = "*"
+django-celery-beat = "*"
+django-celery-results = "*"
+gevent = "*"
+flower = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.7"

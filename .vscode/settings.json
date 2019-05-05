@@ -1,0 +1,7 @@
+{
+    "python.terminal.activateEnvironment": true,
+    "python.pythonPath": "C:\\Users\\NewVici\\.virtualenvs\\Q-Parser-fCNW_mtC\\Scripts\\python.exe",
+    // pipenv --py
+    // "python.pipenvPath": "c:\\Users\\NewVici\\Anaconda3\\Scripts\\pipenv.exe",
+    // "python.venvPath": "c:/Users/NewVici/.virtualenvs",
+}
