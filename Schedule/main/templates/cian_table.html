@@ -1,13 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
 </head>
+
 <body>
-  <h1 class="px-4 py-2 pb-3 display-4 bg-light text-dark">День добрый! Квартирку выбираем?</h1>
+  <h1 class="px-4 mb-0 display-4 bg-light text-dark">День добрый!
+    Квартирку выбираем?</h1>
+  <div class="row bg-light">
+    <div class="col-5">
+      <form method="GET" class="input-group m-3 mt-4 ml-4" action="{% url 'main:search_apartment' %}">
+        <input class="form-control" placeholder="Я ищу..." name="query" value="{{ request.GET.query }}">
+        <div class="input-group-append">
+          <button class="btn btn-dark" type="submit">Найти</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  </div>
   <table class="table table-sm table-hover table-striped">
     <thead>
       <tr>
@@ -16,23 +33,27 @@
         <th>Этаж</th>
         <th>Цена, руб/мес</th>
         <th>Адрес
-          <a href="{% url 'main:delete_apartment' %}" class="float-right text-danger mr-3">Удалить всё</a>
-          <a href="{% url 'main:load_apartment' %}" class="float-right text-info mx-3">Обновить выдачу</a>
-          <a class="float-right text-dark">Всего объявлений: {{ ads.count }}</a>  
+          <a href="{% url 'main:delete_apartment' %}"
+            class="float-right text-danger mr-3">Удалить всё</a>
+          <a href="{% url 'main:load_apartment' %}"
+            class="float-right text-info mx-3">Обновить выдачу</a>
+          <a class="float-right text-dark">Всего объявлений:
+            {{ ads.count }}</a>
         </th>
       </tr>
     </thead>
     <tbody>
       {% for ad in ads %}
-        <tr>
-          <th scope="row">{{ forloop.counter }}</th>
-          <td>{{ ad.total_area }} м²</td>
-          <td>{{ ad.floor }}</td>
-          <td>{{ ad.price }}</td>
-          <td>{{ ad.address }}</td>
-        </tr>
-      {% endfor %}    
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ ad.total_area }} м²</td>
+        <td>{{ ad.floor }}</td>
+        <td>{{ ad.price }}</td>
+        <td>{{ ad.address }}</td>
+      </tr>
+      {% endfor %}
     </tbody>
   </table>
 </body>
+
 </html>

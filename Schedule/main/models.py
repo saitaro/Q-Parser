@@ -43,7 +43,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 class Apartment(models.Model):
-    address = models.CharField(max_length=512)
+    address = models.CharField(db_index=True, max_length=512)
     total_area = models.PositiveSmallIntegerField()
     floor = models.CharField(max_length=7)
     price = models.PositiveIntegerField()
