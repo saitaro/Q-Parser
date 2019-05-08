@@ -16,7 +16,7 @@
     Квартирку выбираем?</h1>
   <div class="row bg-light">
     <div class="col-5">
-      <form method="GET" class="input-group m-3 mt-4 ml-4" action="{% url 'main:search_apartment' %}">
+      <form method="GET" class="input-group m-3 mt-4 ml-4" action="{% url 'main:cian_render' %}">
         <input class="form-control" placeholder="Я ищу..." name="query" value="{{ request.GET.query }}">
         <div class="input-group-append">
           <button class="btn btn-dark" type="submit">Найти</button>
@@ -38,22 +38,23 @@
           <a href="{% url 'main:load_apartment' %}"
             class="float-right text-info mx-3">Обновить выдачу</a>
           <a class="float-right text-dark">Всего объявлений:
-            {{ ads.count }}</a>
+            {{ ads_count }}</a>
         </th>
       </tr>
     </thead>
     <tbody>
-      {% for ad in ads %}
+      {% for item in items %}
       <tr>
         <th scope="row">{{ forloop.counter }}</th>
-        <td>{{ ad.total_area }} м²</td>
-        <td>{{ ad.floor }}</td>
-        <td>{{ ad.price }}</td>
-        <td>{{ ad.address }}</td>
+        <td>{{ item.total_area }} м²</td>
+        <td>{{ item.floor }}</td>
+        <td>{{ item.price }}</td>
+        <td>{{ item.address }}</td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
+  {% include 'pagination.html' %}
 </body>
 
 </html>
