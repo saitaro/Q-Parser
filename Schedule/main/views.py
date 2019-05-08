@@ -47,9 +47,4 @@ def load_apartment(request):
     Apartment.objects.all().delete()
     main.delay()
     return redirect('main:cian_render')
-
-# def search_apartment(request):
-#     search_vector = SearchVector('address', 'total_area', 'floor', 'price')
-#     queryset = Apartment.objects.annotate(search=search_vector) \
-#                                 .filter(search=request.GET.get('query'))
-#     return cian_render(request, queryset)
+    
