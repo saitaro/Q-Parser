@@ -15,7 +15,7 @@ def cian_render(request, queryset=None):
     else:
         queryset = queryset or Apartment.objects.all()
 
-    paginator = Paginator(queryset, 15)
+    paginator = Paginator(queryset, 20)
     page = request.GET.get('page')
     
     try:
@@ -36,6 +36,7 @@ def cian_render(request, queryset=None):
         'page_range': page_range,
         'ads_count': queryset.count(),
         'query': query,
+        'max_index': max_index,
     }
     return render(request, 'cian_table.html', context)
 

@@ -44,7 +44,7 @@
     <tbody>
       {% for item in items %}
       <tr>
-        <th scope="row">{{ forloop.counter }}</th>
+        <th scope="row">{{ item.id }}</th>
         <td>{{ item.total_area }} м²</td>
         <td>{{ item.floor }}</td>
         <td>{{ item.price }}</td>

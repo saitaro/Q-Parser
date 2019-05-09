@@ -17,7 +17,7 @@ from .models import Apartment
 
 
 # URL = 'https://www.cian.ru/cat.php?deal_type=rent&engine_version=2&maxarea=30&minarea=20&offer_type=flat&region=1&room1=1&type=4'
-URL = 'https://www.cian.ru/cat.php?deal_type=rent&engine_version=2&maxarea=25&minarea=20&offer_type=flat&region=1&room1=1&type=4'
+URL = 'https://www.cian.ru/cat.php?deal_type=rent&engine_version=2&offer_type=flat&region=1&room1=1&type=4'
 # URL = 'https://www.cian.ru/cat.php?deal_type=rent&engine_version=2&offer_type=flat&region=1&room1=1&type=4'
 
 def get_links(url, user_agent=None, proxy=None):
@@ -25,8 +25,8 @@ def get_links(url, user_agent=None, proxy=None):
     proxies = {'http': proxy} if proxy else None
     response = requests.get(url, headers=headers, proxies=proxies)
     html = response.text
-    soup = BeautifulSoup(html, 'lxml') 
-    # page_pattern = re.compile('--list-item--')
+    soup = BeautifulSoup(html, 'lxml')
+    page_pattern = re.compile('--list-item--')
     pages = soup.findAll(class_=page_pattern)
 
     links = [url]
@@ -93,8 +93,8 @@ def parse(url):
 
 @shared_task
 def main():
-    proxy = '212.42.104.74:3128'
-    user_agent = 'Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36'
+    proxy = '212.200.126.16:8080'
+    user_agent = 'Mozilla/5.0 (Windows NT 5.1; rv:36.0) Gecko/20100101 Firefox/36.0'
     links = get_links(URL, 
         user_agent=user_agent,
         proxy=proxy,
