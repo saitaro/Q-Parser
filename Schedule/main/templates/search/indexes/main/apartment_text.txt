@@ -1,0 +1,4 @@
+{{ object.address }}
+{{ object.total_area }}
+{{ object.floor }}
+{{ object.price }}

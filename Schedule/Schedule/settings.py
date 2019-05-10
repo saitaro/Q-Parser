@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django_celery_beat',
     'django_celery_results',
     'main',
-    'django.contrib.postgres'
+    'django.contrib.postgres',
+    'haystack',
 ]
 
 AUTH_USER_MODEL = 'main.User'
@@ -88,6 +89,15 @@ DATABASES = {
     }
 }
 
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'haystack',
+    },
+}
+
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

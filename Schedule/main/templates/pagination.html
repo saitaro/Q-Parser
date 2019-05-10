@@ -17,7 +17,7 @@
         {% if items.number > 4 %}
           <li class="page-item text-dark">
             <a href="?page={{ 1 }}{% if query %}&query={{ query }}{% endif %}"
-              class="page-link text-dark">1</a>
+            class="page-link text-dark">1</a>
           </li>
         {% endif %}
 
@@ -49,7 +49,7 @@
         {% if items.number < max_index|add:"-4" %}
           <li class="page-item text-dark">
             <a href="?page={{ max_index }}{% if query %}&query={{ query }}{% endif %}"
-              class="page-link text-dark">{{ max_index }}</a>
+            class="page-link text-dark">{{ max_index }}</a>
           </li>
         {% endif %}
 
