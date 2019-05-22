@@ -43,10 +43,6 @@ INSTALLED_APPS = [
     'django_celery_results',
     'main',
     'django.contrib.postgres',
-<<<<<<< HEAD
-    'haystack',
-=======
->>>>>>> 6ad2467594dd2148d0c935976258ed0a067df104
 ]
 
 AUTH_USER_MODEL = 'main.User'
