@@ -3,8 +3,12 @@ import json
 from django.shortcuts import render, redirect
 from django.contrib.postgres.search import SearchVector
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+<<<<<<< HEAD
 from django.http import HttpResponse
 from haystack.query import SearchQuerySet
+=======
+from django.contrib.auth import get_user_model
+>>>>>>> 6ad2467594dd2148d0c935976258ed0a067df104
 
 from .models import Apartment
 from .tasks import main
@@ -32,16 +36,24 @@ def cian_render(request, queryset=None):
 
     index = items.number - 1
     max_index = len(paginator.page_range)
-    start_index = index - 5 if index >=5 else 0
+    start_index = index - 5 if index >= 5 else 0
     end_index = index + 5 if index <= index - 5 else max_index
     page_range = paginator.page_range[start_index:end_index]
 
+<<<<<<< HEAD
+=======
+    User = get_user_model()
+    last = User.objects.last()
+    
+>>>>>>> 6ad2467594dd2148d0c935976258ed0a067df104
     context = {
         'items': items,
         'page_range': page_range,
         'ads_count': queryset.count(),
         'query': queryset,
         'max_index': max_index,
+        'last': last,
+        'favs': request.user.favorites.all() if request.user.is_authenticated else {},
     }
     return render(request, 'cian_table.html', context)
 
@@ -55,6 +67,7 @@ def load_apartment(request):
     Apartment.objects.all().delete()
     main.delay()
     return redirect('main:cian_render')
+<<<<<<< HEAD
 
 
 def autocomplete(request):
@@ -67,3 +80,5 @@ def autocomplete(request):
     })
     return HttpResponse(data, content_type='application/json')
 
+=======
+>>>>>>> 6ad2467594dd2148d0c935976258ed0a067df104

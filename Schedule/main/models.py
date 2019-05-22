@@ -33,6 +33,7 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     """Custom user model with email instead of username."""
 
+    favorites = models.ManyToManyField('Apartment', null=True, blank=True)
     email = models.EmailField(max_length=120, unique=True)
     name = models.CharField(max_length=200)
     is_active = models.BooleanField(default=True)
@@ -51,3 +52,4 @@ class Apartment(models.Model):
 
     def __str__(self):
         return f'{self.address}, {self.total_area} м², {self.floor}, {self.price} руб/мес'
+
