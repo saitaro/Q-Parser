@@ -64,28 +64,19 @@
       {% for item in items %}
       <tr>
         <th scope="row">{{ item.id }}</th>
-        <td>{{ item.object.total_area }} м²</td>
-        <!-- <td>{{ item.object.floor }}</td> -->
-        <td>{{ item.object.price }}</td>
-        <td>{{ item.object.address }}</td>
-        <!-- <td>{{ item.total_area }} м²</td>
+        <td>{{ item.total_area }} м²</td>
         <td>{{ item.floor }}</td>
         <td>{{ item.price }}</td>
-<<<<<<< HEAD
-        <td>{{ item.address }}</td> -->
-=======
         {% if user.is_authenticated and item in favs %}
         <td>{{ item.address }}<a class="ml-2" title="Убрать из избранного" href="{% url 'add_favorite' pk=item.pk %}">★</a> </td>
         {% else %}
         <td>{{ item.address }}<a class="ml-2" title="В избранное" href="{% url 'add_favorite' pk=item.pk %}">☆</a> </td>
         {% endif %}  
->>>>>>> 6ad2467594dd2148d0c935976258ed0a067df104
       </tr>
       {% endfor %}
     </tbody>
   </table>
   {% include 'pagination.html' %}
-  <!-- {% include 'autocomplete.html' %} -->
 </body>
 
 </html>

@@ -3,26 +3,19 @@ import json
 from django.shortcuts import render, redirect
 from django.contrib.postgres.search import SearchVector
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-<<<<<<< HEAD
-from django.http import HttpResponse
-from haystack.query import SearchQuerySet
-=======
 from django.contrib.auth import get_user_model
->>>>>>> 6ad2467594dd2148d0c935976258ed0a067df104
 
 from .models import Apartment
 from .tasks import main
 
-
 def cian_render(request, queryset=None):
-    queryset = SearchQuerySet().autocomplete(content_auto=request.GET.get('query', ''))
-    # query = request.GET.get('query')
-    # if query:
-    #     search_vector = SearchVector('address', 'total_area', 'floor', 'price')
-    #     queryset = Apartment.objects.annotate(search=search_vector) \
-    #                                 .filter(search=request.GET.get('query'))
-    # else:
-    #     queryset = queryset or Apartment.objects.all()
+    query = request.GET.get('query')
+    if query:
+        search_vector = SearchVector('address', 'total_area', 'floor', 'price')
+        queryset = Apartment.objects.annotate(search=search_vector) \
+                                    .filter(search=request.GET.get('query'))
+    else:
+        queryset = queryset or Apartment.objects.all()
 
     paginator = Paginator(queryset, 20)
     page = request.GET.get('page')
@@ -40,12 +33,9 @@ def cian_render(request, queryset=None):
     end_index = index + 5 if index <= index - 5 else max_index
     page_range = paginator.page_range[start_index:end_index]
 
-<<<<<<< HEAD
-=======
     User = get_user_model()
     last = User.objects.last()
     
->>>>>>> 6ad2467594dd2148d0c935976258ed0a067df104
     context = {
         'items': items,
         'page_range': page_range,
@@ -67,18 +57,3 @@ def load_apartment(request):
     Apartment.objects.all().delete()
     main.delay()
     return redirect('main:cian_render')
-<<<<<<< HEAD
-
-
-def autocomplete(request):
-    sqs = SearchQuerySet().autocomplete(content_auto=request.GET.get('query', ''))[:5]
-    suggestions = [result.title for result in sqs]
-    # Make sure you return a JSON object, not a bare list.
-    # Otherwise, you could be vulnerable to an XSS attack.
-    data = json.dumps({
-        'results': suggestions
-    })
-    return HttpResponse(data, content_type='application/json')
-
-=======
->>>>>>> 6ad2467594dd2148d0c935976258ed0a067df104
