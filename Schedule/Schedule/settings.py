@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+
 from celery.schedules import crontab
+from django.conf.global_settings import LOGIN_REDIRECT_URL
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -29,6 +31,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
+    'users.apps.UsersConfig',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,7 +42,7 @@ INSTALLED_APPS = [
     'django_celery_beat',
     'django_celery_results',
     'main',
-    'django.contrib.postgres'
+    'django.contrib.postgres',
 ]
 
 AUTH_USER_MODEL = 'main.User'
@@ -122,6 +126,11 @@ USE_L10N = True
 USE_TZ = True
 
 TIME_ZONE = 'UTC'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = 'main:cian_render'
+LOGOUT_REDIRECT_URL = 'main:cian_render'
 
 # url адрес брокера. В нашем случае, адрес сервера Redis.
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379' # 'redis://localhost:6379'

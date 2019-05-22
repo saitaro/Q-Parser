@@ -1,7 +1,6 @@
 from django.urls import path
 from .views import cian_render, delete_apartment, load_apartment
 
-
 app_name = 'main'
 
 urlpatterns = [
