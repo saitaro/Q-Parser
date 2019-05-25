@@ -40,7 +40,7 @@ def cian_render(request, queryset=None):
         'items': items,
         'page_range': page_range,
         'ads_count': queryset.count(),
-        'query': queryset,
+        'query': query,
         'max_index': max_index,
         'last': last,
         'favs': request.user.favorites.all() if request.user.is_authenticated else {},
